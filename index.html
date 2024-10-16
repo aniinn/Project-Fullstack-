@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Management Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Kalahari</h2>
+            </div>
+            <nav>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Teams</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="goalsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Goals
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="goalsDropdown">
+                            <li><a class="dropdown-item" href="#">Q1 Goals</a></li>
+                            <li><a class="dropdown-item" href="#">Q2 Goals</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Private Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Analytics</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-profile mt-auto">
+                <img src="user-avatar.png" alt="User">
+                <span>Michael Jones</span>
+                <p>michael@workmail.com</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header d-flex justify-content-between align-items-center">
+                <h1>AI Team Management</h1>
+                <div class="user-info">
+                    <span class="user-name">Eva Murphy</span>
+                    <img src="user-avatar.png" alt="User Avatar" class="rounded-circle">
+                </div>
+            </header>
+
+            <section class="stats-section">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-info text-white">
+                            <div class="card-body">
+                                <h5>Efficiency</h5>
+                                <p>87%</p>
+                                <small>Dev team</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-warning text-white">
+                            <div class="card-body">
+                                <h5>Tasks This Week</h5>
+                                <p>15</p>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 35%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small>35% left</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h5>Online Time Per Day</h5>
+                                <p>9.2h</p>
+                                <small>Increased compared to last week</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="charts mt-5">
+                <h2>Performance Charts</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="chart-card">
+                            <h5>Team Efficiency Bar Chart</h5>
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="chart-card">
+                            <h5>Department Distribution Pie Chart</h5>
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="departments mt-5">
+                <h2>Departments</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-light text-center">
+                            <div class="card-body">
+                                <h5>UI Designers</h5>
+                                <p>23 Members</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light text-center">
+                            <div class="card-body">
+                                <h5>Sales</h5>
+                                <p>12 Members</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-light text-center">
+                            <div class="card-body">
+                                <h5>SEO</h5>
+                                <p>7 Members</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        const barCtx = document.getElementById('barChart').getContext('2d');
+        const barChart = new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Dev Team', 'Design Team', 'Marketing', 'Sales'],
+                datasets: [{
+                    label: 'Efficiency',
+                    data: [87, 75, 65, 80],
+                    backgroundColor: ['#1E88E5', '#E91E63', '#FFC107', '#43A047'],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        const pieChart = new Chart(pieCtx, {
+            type: 'pie',
+            data: {
+                labels: ['UI Designers', 'Sales', 'SEO', 'Development'],
+                datasets: [{
+                    label: 'Department Distribution',
+                    data: [23, 12, 7, 34],
+                    backgroundColor: ['#2196F3', '#FF9800', '#4CAF50', '#9C27B0'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

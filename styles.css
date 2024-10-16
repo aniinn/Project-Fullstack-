@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background-color: #adb5bd;
+}
+
+.container-fluid {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #adb5bd;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo h2 {
+    font-size: 24px;
+    color: #000000;
+}
+
+.nav-link {
+    color: #adb5bd;
+    margin: 15px 0;
+}
+
+.nav-link.active, .nav-link:hover {
+    color: #fff;
+}
+
+.user-profile {
+    text-align: center;
+    margin-top: auto;
+}
+
+.user-profile img {
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-profile span {
+    display: block;
+    font-weight: bold;
+    color: #fff;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+.dashboard-header {
+    margin-bottom: 20px;
+}
+
+.stats-section .card {
+    margin-bottom: 20px;
+}
+
+.card h5 {
+    font-size: 18px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card small {
+    font-size: 12px;
+}
+
+.team-performance, .departments {
+    margin-top: 40px;
+}
+
+.chart-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.chart-card h5 {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
